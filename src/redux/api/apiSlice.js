@@ -3,6 +3,7 @@ import { BASE_URL } from "../constants";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
+  credentials: "include",    // <-- Add this line to send cookies
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.userInfo?.token;
     if (token) {
@@ -11,6 +12,7 @@ const baseQuery = fetchBaseQuery({
     return headers;
   },
 });
+
 
 export const apiSlice = createApi({
   baseQuery,
